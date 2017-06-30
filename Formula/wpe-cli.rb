@@ -1,6 +1,6 @@
 require File.expand_path("../../Abstract/abstract-php-phar", __FILE__)
 
-class WPECLI < AbstractPhpPhar
+class WPE < AbstractPhpPhar
     init
     desc "application for running WP CLI commands against WP Engine account"
     homepage "https://github.com/JPry/wpe-cli"
@@ -17,17 +17,5 @@ class WPECLI < AbstractPhpPhar
 
     def phar_file
         "wpe-cli-#{version}.phar"
-    end
-
-    def phar_wrapper
-        <<-EOS.undent
-            #!/usr/bin/env bash
-            set -- $* && [ "${0##*/} $1" == "box build" ] && PHARRW="-d phar.readonly=Off"
-            /usr/bin/env php -d allow_url_fopen=On -d detect_unicode=Off $PHARRW #{libexec}/#{@real_phar_file} $*
-        EOS
-    end
-
-    test do
-        system "#{bin}/wpe", "--info"
     end
 end
