@@ -1,6 +1,6 @@
 require File.expand_path("../../Abstract/abstract-php-phar", __FILE__)
 
-class WPE < AbstractPhpPhar
+class WpeCli < AbstractPhpPhar
     init
     desc "application for running WP CLI commands against WP Engine account"
     homepage "https://github.com/JPry/wpe-cli"
@@ -17,5 +17,9 @@ class WPE < AbstractPhpPhar
 
     def phar_file
         "wpe-cli-#{version}.phar"
+    end
+
+    def phar_bin
+        "wpe"
     end
 end
