@@ -16,7 +16,7 @@ class WpeCli < AbstractPhpPhar
     end
 
     def phar_file
-        "wpe-cli-#{version}.phar"
+        "wpe-cli.phar"
     end
 
     def phar_bin
